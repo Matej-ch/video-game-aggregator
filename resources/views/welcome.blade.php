@@ -27,7 +27,7 @@
                 </div>
             @endif
 
-            <div class="content">
+            <div class="content bg-blue-500">
                 <div class="title m-b-md">
                     Laravel
                 </div>

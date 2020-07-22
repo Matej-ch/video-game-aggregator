@@ -3,7 +3,9 @@
     @forelse($tubularGames as $game)
         <div class="game t-8">
             <div class="relative inline-block">
-                <a href=""><img src="{{ str_replace('thumb','cover_big',$game['cover']['url'])}}" alt="{{$game['name']}}" class="hover:opacity-75 transition ease-in-out duration-150"></a>
+                <a href="{{route('games.show', $game['slug'])}}">
+                    <img src="{{ str_replace('thumb','cover_big',$game['cover']['url'])}}" alt="{{$game['name']}}" class="hover:opacity-75 transition ease-in-out duration-150">
+                </a>
 
                 @if(array_key_exists('rating',$game))
                     <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right: -20px;bottom: -20px">
@@ -14,7 +16,7 @@
                 @endif
             </div>
 
-            <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8"> {{$game['name']}}</a>
+            <a href="{{route('games.show', $game['slug'])}}" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8"> {{$game['name']}}</a>
             <div class="text-gray-400 mt-1">
                 @foreach($game['platforms'] as $platform)
                     @if (array_key_exists('abbreviation',$platform))

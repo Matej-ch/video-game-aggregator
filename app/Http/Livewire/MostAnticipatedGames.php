@@ -15,7 +15,7 @@ class MostAnticipatedGames extends Component
 
         $afterFourMonths = Carbon::now()->addMonths(4)->timestamp;
         $this->mostAnticipatedGames = \Http::withHeaders(config('services.igdb'))
-            ->withOptions(['body' => "fields name,cover.url,first_release_date, popularity,rating,rating_count;
+            ->withOptions(['body' => "fields name,cover.url,first_release_date, popularity,rating,rating_count,slug;
             where platforms = (48,49,130,6) & (first_release_date >= {$current} & first_release_date < {$afterFourMonths});
             sort popularity desc;
             limit 3;"])

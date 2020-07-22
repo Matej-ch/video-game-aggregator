@@ -14,7 +14,7 @@ class ComingSoonGames extends Component
         $current = Carbon::now()->timestamp;
 
         $this->comingSoonGames = \Http::withHeaders(config('services.igdb'))
-            ->withOptions(['body' => "fields name,cover.url,first_release_date, popularity,rating,rating_count;
+            ->withOptions(['body' => "fields name,cover.url,first_release_date, popularity,rating,rating_count,slug;
             where platforms = (48,49,130,6) & (first_release_date >= {$current} & popularity > 5);
             sort first_release_date desc;
             limit 3;"])

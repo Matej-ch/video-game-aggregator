@@ -11,7 +11,7 @@ class TubularGames extends Component
 
     public function loadTubularGames()
     {
-        $this->tubularGames = \Cache::remember('tubular',60, static function () {
+        $tubularGamesUnformated = \Cache::remember('tubular',60, static function () {
             $before = Carbon::now()->subMonths(2)->timestamp;
             $after = Carbon::now()->addMonths(2)->timestamp;
             return \Http::withHeaders(config('services.igdb'))
@@ -22,10 +22,23 @@ class TubularGames extends Component
                 ->get('https://api-v3.igdb.com/games')
                 ->json();
         });
+
+        $this->tubularGames = $this->formatForView($tubularGamesUnformated);
     }
 
     public function render()
     {
         return view('livewire.tubular-games');
+    }
+
+    private function formatForView($games)
+    {
+        return collect($games)->map(static function ($game){
+            return collect($game)->merge([
+                'coverImageUrl' =>  str_replace('thumb','cover_big',$game['cover']['url']),
+                'rating' => isset($game['rating']) ? round($game['rating'],1) .'%' : 'N',
+                'platforms' => collect($game['platforms'])->pluck('abbreviation')->implode(', ')
+            ]);
+        })->toArray();
     }
 }

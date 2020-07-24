@@ -4,7 +4,7 @@
     <div class="container mx-auto px-4">
         <div class="game-details border-b border-gray-800 pb-12 flex flex-col lg:flex-row">
             <div class="flex-none">
-                <img src="{{ $game['coverImage'] }}" alt="Image of game">
+                <img src="{{ $game['coverImageUrl'] }}" alt="Image of game">
             </div>
             <div class="lg:ml-12 lg:mr-64">
                 <h2 class="font-semibold text-4xl leading-tight mt-1">
@@ -130,25 +130,8 @@
 
             <div class="similar-games text-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6 gap-12">
 
-                @foreach($game['similar_games'] as $similar)
-                    <div class="game t-8">
-                        <div class="relative inline-block">
-                            <a href="">
-                                <img src="{{ $similar['coverImage'] }}" alt="Game image" class="hover:opacity-75 transition ease-in-out duration-150">
-                            </a>
-
-                            <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right: -20px;bottom: -20px">
-                                <div class="font-semibold-text-xs flex justify-center items-center h-full">
-                                    {{ $similar['rating'] }}
-                                </div>
-                            </div>
-                        </div>
-
-                        <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8"> {{$similar['name'] }}</a>
-                        <div class="text-gray-400 mt-1">
-                            {{ $similar['platforms'] }}
-                        </div>
-                    </div>
+                @foreach($game['similar_games'] as $game)
+                    <x-game-card :game="$game" />
                 @endforeach
 
             </div>

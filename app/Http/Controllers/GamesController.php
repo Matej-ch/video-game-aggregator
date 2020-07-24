@@ -62,7 +62,7 @@ class GamesController extends Controller
     private function formatGameForView($game)
     {
         return collect($game)->merge([
-            'coverImage' => Str::replaceFirst('thumb','cover_big',$game['cover']['url']),
+            'coverImageUrl' => Str::replaceFirst('thumb','cover_big',$game['cover']['url']),
             'rating' => isset($game['rating']) ? round($game['rating'],1) .'%' : 'N',
             'criticRating' => isset($game['aggregated_rating']) ? round($game['aggregated_rating'],1) .'%' : 'N',
             'genres' => collect($game['genres'])->pluck('name')->implode(', '),
@@ -76,7 +76,7 @@ class GamesController extends Controller
             })->take(9),
             'similar_games' => collect($game['similar_games'])->map(static function($game) {
                 return collect($game)->merge([
-                    'coverImage' => Str::replaceFirst('thumb','cover_small',$game['cover']['url']),
+                    'coverImageUrl' => Str::replaceFirst('thumb','cover_small',$game['cover']['url']),
                     'rating' => isset($game['rating']) ? round($game['rating'],1) .'%' : 'N',
                     'platforms' => collect($game['platforms'])->pluck('abbreviation')->implode(', '),
                 ]);

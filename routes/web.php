@@ -1,5 +1,6 @@
 <?php
 
+use App\Comment;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +15,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/','GamesController@index')->name('games.index');
+
 Route::get('/games/{slug}','GamesController@show')->name('games.show');
+
+Route::get('/comments','CommentsController@index')->name('comments.index');
+
+Route::get('/comments/{comment}/edit', static function (Comment $comment) {
+    return view('comments.edit',['comment' => $comment]);
+});
+
+Route::patch('/comments/{comment}', static function (Comment $comment) {
+    $comment->update(
+        request()->validate(['body' => 'required|string'])
+    );
+
+    return redirect("/comments/{$comment->id}/edit");
+});

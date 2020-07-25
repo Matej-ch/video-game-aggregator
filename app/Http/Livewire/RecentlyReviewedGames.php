@@ -10,7 +10,7 @@ class RecentlyReviewedGames extends Component
 
     public $recentlyReviewedGames = [];
 
-    public function loadRecentGames()
+    public function loadRecentGames(): void
     {
         $before = Carbon::now()->subMonths(2)->timestamp;
 

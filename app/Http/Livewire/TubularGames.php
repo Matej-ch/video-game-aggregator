@@ -9,7 +9,7 @@ class TubularGames extends Component
 {
     public $tubularGames = [];
 
-    public function loadTubularGames()
+    public function loadTubularGames(): void
     {
         $tubularGamesUnformated = \Cache::remember('tubular',60, static function () {
             $before = Carbon::now()->subMonths(2)->timestamp;

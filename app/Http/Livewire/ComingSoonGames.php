@@ -9,7 +9,7 @@ class ComingSoonGames extends Component
 {
     public $comingSoonGames = [];
 
-    public function loadComingSoonGames()
+    public function loadComingSoonGames(): void
     {
         $current = Carbon::now()->timestamp;
 

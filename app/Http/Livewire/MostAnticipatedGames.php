@@ -9,7 +9,7 @@ class MostAnticipatedGames extends Component
 {
     public $mostAnticipatedGames = [];
 
-    public function loadMostAnticipatedGames()
+    public function loadMostAnticipatedGames(): void
     {
         $current = Carbon::now()->timestamp;
 

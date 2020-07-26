@@ -13,5 +13,10 @@
             </div>
 
         </x-form>
+
+        <x-form-button method="DELETE" action="/comments/{{$comment->id}}" class="bg-blue-400 text-white rounded py-2 px-4">
+            DELETE
+        </x-form-button>
+
     </x-section>
 </x-layout>

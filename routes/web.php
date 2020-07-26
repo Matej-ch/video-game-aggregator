@@ -31,3 +31,9 @@ Route::patch('/comments/{comment}', static function (Comment $comment) {
 
     return redirect("/comments/{$comment->id}/edit");
 });
+
+Route::delete('/comments/{comment}',static function(Comment $comment) {
+    $comment->delete();
+
+    return redirect("/");
+});

@@ -40,7 +40,7 @@
 
 
     <x-modal
-    title="This modal title">
+    title="This modal title" type="warning">
 
         <x-slot name="trigger"><button @click="on = true">Show Modal</button></x-slot>
         <h2>This is modal body</h2>

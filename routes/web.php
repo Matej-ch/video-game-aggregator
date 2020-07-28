@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','GamesController@index')->name('games.index');
+Route::get('/','GamesController@index')->name('games.index')->name('/games');
 
-Route::get('/games/{slug}','GamesController@show')->name('games.show');
+Route::get('/games/{slug}','GamesController@show')->name('games.show')->name('show');
 
 Route::get('/comments','CommentsController@index')->name('comments.index');
 

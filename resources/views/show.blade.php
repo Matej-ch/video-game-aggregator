@@ -106,37 +106,44 @@
             </div>
         </div>
 
-        <div class="images-container border-b border-gray-800 pb-12 mt-8">
-            <h2 class="font-semibold text-blue-500 uppercase tracking-wide">
-                Screenshots
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-8">
+        <x-tabs active="Screenshots">
 
-                @foreach($game['screenshots'] as $screenshot)
-                    <div>
-                        <a href="{{ $screenshot['huge'] }}">
-                            <img src="{{ $screenshot['big'] }}" alt="Game image" class="hover:opacity-75 transition ease-in-out duration-150">
-                        </a>
+            <x-tab name="Screenshots">
+                <div class="images-container border-b border-gray-800 pb-12 mt-8">
+                    <h2 class="font-semibold text-blue-500 uppercase tracking-wide">
+                        Screenshots
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-8">
+
+                        @foreach($game['screenshots'] as $screenshot)
+                            <div>
+                                <a href="{{ $screenshot['huge'] }}">
+                                    <img src="{{ $screenshot['big'] }}" alt="Game image" class="hover:opacity-75 transition ease-in-out duration-150">
+                                </a>
+                            </div>
+                        @endforeach
+
                     </div>
-                @endforeach
+                </div>
+            </x-tab>
 
-            </div>
-        </div>
+            <x-tab name="Similar">
+                <div class="similar-container mt-8">
+                    <h2 class="font-semibold text-blue-500 uppercase tracking-wide">
+                        Similar
+                    </h2>
 
-        <div class="similar-container mt-8">
-            <h2 class="font-semibold text-blue-500 uppercase tracking-wide">
-                Similar
-            </h2>
+                    <div class="similar-games text-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6 gap-12">
 
-            <div class="similar-games text-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6 gap-12">
+                        @foreach($game['similar_games'] as $game)
+                            <x-game-card :game="$game" />
+                        @endforeach
 
-                @foreach($game['similar_games'] as $game)
-                    <x-game-card :game="$game" />
-                @endforeach
+                    </div>
 
-            </div>
-
-        </div>
+                </div>
+            </x-tab>
+        </x-tabs>
 
     </div>
 @endsection

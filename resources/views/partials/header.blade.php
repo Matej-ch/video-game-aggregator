@@ -1,6 +1,6 @@
 <header class="border-b border-gray-800 px-6 py-4" x-data="{open: false}">
 
-    <div class="flex justify-between items-center">
+    <div class="flex justify-start items-center">
         <h1 class="font-bold tracking-widest uppercase">
             <img src="" alt="LOGO HERE" class="w-32 flex-none">
         </h1>

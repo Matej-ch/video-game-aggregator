@@ -9,20 +9,28 @@ toggleTabs() {
 this.tabs.forEach(tab => tab.__x.$data.showIfActive(this.activeTab));
 
 } }" x-init="() => {
-tabs = [...$refs.tabs.children];
-    tabHeadings = tabs.map(tab => tab.__x.$data.name);
+
+    tabs = [...$refs.tabs.children];
+
+    tabHeadings = tabs.map((tab,index) => {
+        tab.__x.$data.id = (index + 1);
+        return tab.__x.$data.name;
+    });
 
     toggleTabs();
 }">
 
-    <div class="mb-3">
+    <div class="mb-3" role="tablist">
         <template x-for="(tab, index) in tabHeadings" :key="index">
             <button
                 class="px-4 py-1 text-sm rounded hover:bg-blue-500 hover:text-white"
                 x-text="tab"
                 @click="activeTab = tab; toggleTabs()"
-                :aria-selected="tab === activeTab"
-            :class="tab === activeTab ? 'bg-blue-500 text-white' : ''"></button>
+                :class="tab === activeTab ? 'bg-blue-500 text-white' : ''"
+                :id="`tab-${index + 1}`"
+                role="tab"
+                :aria-selected="(tab === activeTab).toString()"
+                :aria-controls="`tab-panel-${index + 1}`"></button>
         </template>
     </div>
 

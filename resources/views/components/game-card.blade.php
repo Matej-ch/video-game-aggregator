@@ -4,7 +4,7 @@
             <img src="{{ $game['coverImageUrl'] }}" alt="{{$game['name']}}" class="hover:opacity-75 transition ease-in-out duration-150">
         </a>
 
-        <div id="{{$game['slug']}}" class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full relative text-sm" style="right: -20px;bottom: -20px">
+        <div id="{{$game['slug']}}" class="absolute w-16 h-16 bg-gray-800 rounded-full text-sm" style="bottom: -20px;right: -20px;">
 
             @push('scripts')
                 @include('partials/_rating',['slug' => $game['slug'],'rating' => $game['rating'],'event' => null])

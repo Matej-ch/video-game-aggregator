@@ -33,7 +33,9 @@
     </div>
 </footer>
 
-<livewire:scripts>
+    <livewire:scripts></livewire:scripts>
+    <script src="/js/app.js"></script>
+    @stack('scripts')
 
 </body>
 </html>

@@ -25,6 +25,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "progressbar.js": "^1.1.0",
         "tailwindcss": "^1.5.1"
     }
 }

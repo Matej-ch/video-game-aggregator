@@ -25,10 +25,10 @@
 
                 <div class="flex flex-wrap items-center mt-8 mt-8">
                     <div class="flex items-center">
-                        <div class="w-16 h-16 bg-gray-800 rounded-full">
-                            <div class="font-semibold text-xs flex justify-center items-center h-full">
-                                {{ $game['rating'] }}
-                            </div>
+                        <div class="w-16 h-16 bg-gray-800 rounded-full relative text-sm" id="member-rating">
+                            @push('scripts')
+                                @include('partials/_rating',['slug' => 'member-rating','rating' => $game['rating'],'event' => null])
+                            @endpush
                         </div>
                         <div class="ml-4 text-xs">
                             Member <br> score
@@ -36,10 +36,10 @@
                     </div>
 
                     <div class="flex items-center ml-12">
-                        <div class="w-16 h-16 bg-gray-800 rounded-full">
-                            <div class="font-semibold text-xs flex justify-center items-center h-full">
-                                {{ $game['criticRating'] }}
-                            </div>
+                        <div id="critic-rating" class="w-16 h-16 bg-gray-800 rounded-full relative text-sm">
+                            @push('scripts')
+                                @include('partials/_rating',['slug' => 'critic-rating','rating' => $game['criticRating'],'event' => null])
+                            @endpush
                         </div>
                         <div class="ml-4 text-xs">
                             Critic <br> score

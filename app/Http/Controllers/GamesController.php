@@ -63,8 +63,8 @@ class GamesController extends Controller
     {
         return collect($game)->merge([
             'coverImageUrl' => Str::replaceFirst('thumb','cover_big',$game['cover']['url']),
-            'rating' => isset($game['rating']) ? round($game['rating'],1) .'%' : 'N',
-            'criticRating' => isset($game['aggregated_rating']) ? round($game['aggregated_rating'],1) .'%' : 'N',
+            'rating' => isset($game['rating']) ? round($game['rating'],1) : '0',
+            'criticRating' => isset($game['aggregated_rating']) ? round($game['aggregated_rating'],1) : '0',
             'genres' => collect($game['genres'])->pluck('name')->implode(', '),
             'platforms' => collect($game['platforms'])->pluck('abbreviation')->implode(', '),
             'involvedCompany' => $game['involved_companies'][0]['company']['name'],
@@ -77,7 +77,7 @@ class GamesController extends Controller
             'similar_games' => collect($game['similar_games'])->map(static function($game) {
                 return collect($game)->merge([
                     'coverImageUrl' => Str::replaceFirst('thumb','cover_small',$game['cover']['url']),
-                    'rating' => isset($game['rating']) ? round($game['rating'],1) .'%' : 'N',
+                    'rating' => isset($game['rating']) ? round($game['rating'],1) : '0',
                     'platforms' => collect($game['platforms'])->pluck('abbreviation')->implode(', '),
                 ]);
             })->take(6),

@@ -36,7 +36,7 @@ class TubularGames extends Component
         return collect($games)->map(static function ($game){
             return collect($game)->merge([
                 'coverImageUrl' =>  str_replace('thumb','cover_big',$game['cover']['url']),
-                'rating' => isset($game['rating']) ? round($game['rating'],1) .'%' : 'N',
+                'rating' => isset($game['rating']) ? round($game['rating'],1) : '0',
                 'platforms' => collect($game['platforms'])->pluck('abbreviation')->implode(', ')
             ]);
         })->toArray();

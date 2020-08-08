@@ -37,3 +37,19 @@ Route::delete('/comments/{comment}',static function(Comment $comment) {
 
     return redirect("/");
 });
+
+
+Route::get('/posts/create', static function () {
+    return view('posts.create');
+});
+
+Route::post('/posts', static function () {
+    request()->validate([
+        'title' => 'required',
+        'body' => 'required',
+        'g-recaptcha-response' => ['required',new \App\Rules\Recaptcha()],
+    ]);
+
+    // table post must be created
+    dd('Validation passed');
+});

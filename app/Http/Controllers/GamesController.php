@@ -44,21 +44,6 @@ class GamesController extends Controller
         ]);
     }
 
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    public function destroy($id)
-    {
-        //
-    }
-
     private function formatGameForView($game)
     {
         return collect($game)->merge([
@@ -76,7 +61,7 @@ class GamesController extends Controller
             })->take(9),
             'similar_games' => collect($game['similar_games'])->map(static function($game) {
                 return collect($game)->merge([
-                    'coverImageUrl' => Str::replaceFirst('thumb','cover_small',$game['cover']['url']),
+                    'coverImageUrl' => Str::replaceFirst('thumb','cover_small',$game['cover']['url'] ?? ''),
                     'rating' => isset($game['rating']) ? round($game['rating'],1) : '0',
                     'platforms' => collect($game['platforms'])->pluck('abbreviation')->implode(', '),
                 ]);

@@ -24,6 +24,15 @@ class RecentlyReviewedGames extends Component
             ->json();
 
         $this->recentlyReviewedGames = $this->formatForView($recentlyReviedUnformated);
+
+        collect($this->recentlyReviewedGames)->filter(static function ($game) {
+            return $game['rating'];
+        })->each(function ($game) {
+            $this->emit('reviewGameWithRatingAdded',[
+                'slug' => "review_{$game['slug']}",
+                'rating' => $game['rating'] / 100,
+            ]);
+        });
     }
 
     public function render()
@@ -36,7 +45,7 @@ class RecentlyReviewedGames extends Component
         return collect($games)->map(static function ($game){
             return collect($game)->merge([
                 'coverImageUrl' =>  str_replace('thumb','cover_big',$game['cover']['url']),
-                'rating' => isset($game['rating']) ? round($game['rating'],1) .'%' : 'N',
+                'rating' => isset($game['rating']) ? round($game['rating'],1) : null,
                 'platforms' => collect($game['platforms'])->pluck('abbreviation')->implode(', ')
             ]);
         })->toArray();

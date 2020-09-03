@@ -11,6 +11,8 @@
             <x-nav-link route="soon">Coming soon</x-nav-link>
         </nav>
 
+        <livewire:search-dropdown/>
+
         <div class="md:hidden">
             <button @click="open = ! open">
                 <svg viewBox="0 0 20 20" width="20" x-show="! open">

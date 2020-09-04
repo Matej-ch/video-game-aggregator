@@ -92,7 +92,6 @@
                     {{ $game['summary'] }}
                 </p>
 
-
                 <div class="mt-12">
                     <x-modal title="Trailer" type="warning">
 

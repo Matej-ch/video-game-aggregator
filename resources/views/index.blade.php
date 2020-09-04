@@ -19,14 +19,4 @@
         </div>
     </div>
 
-
-    <x-modal
-    title="This modal title" type="warning">
-
-        <x-slot name="trigger"><button @click="on = true">Show Modal</button></x-slot>
-        <h2>This is modal body</h2>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam at culpa cupiditate earum eius enim esse explicabo incidunt minima nam nobis quidem recusandae saepe sunt tenetur totam, unde veniam.
-
-    </x-modal>
-
 @endsection

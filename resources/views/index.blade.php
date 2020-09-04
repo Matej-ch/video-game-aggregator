@@ -2,17 +2,6 @@
 
 @section('content')
     <div class="container mx-auto px-4" id="app">
-
-        <x-dropdown>
-            <x-slot name="trigger">
-                <button>Click me</button>
-            </x-slot>
-
-            <x-dropdown-link href="/">One</x-dropdown-link>
-            <x-dropdown-link href="/">Two</x-dropdown-link>
-            <x-dropdown-link href="/">Three</x-dropdown-link>
-        </x-dropdown>
-
         <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Totally Tubular games</h2>
 
         <livewire:tubular-games></livewire:tubular-games>
